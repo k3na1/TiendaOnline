@@ -1,0 +1,73 @@
+
+/* Contenedor principal */
+main {
+  display: flex;
+  justify-content: center;   /* Centrado horizontal */
+  align-items: center;       /* Centrado vertical */
+  min-height: 80vh;          /* Altura mínima para centrar en pantalla */
+  padding: 2rem;
+}
+
+
+form {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 500px;
+}
+
+label {
+  display: block;
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+input, select, button {
+  width: 100%;
+  padding: 0.7rem;
+  margin-top: 0.3rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  background: #333;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 1.5rem;
+}
+
+button:hover {
+  background: #555;
+}
+
+/* Errores */
+.error {
+  color: red;
+  font-size: 0.8rem;
+  display: block;
+  margin-top: 0.2rem;
+}
+
+@media (max-width: 600px) {
+  body {
+    font-size: 14px;
+  }
+
+  form {
+    padding: 1.2rem;
+    border-radius: 8px;
+  }
+
+  input, select, button {
+    font-size: 0.9rem;
+    padding: 0.6rem;
+  }
+
+  button {
+    margin-top: 1rem;
+  }
+}

@@ -1,23 +1,48 @@
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
-main {
-    flex: 1;
-    padding: 2rem;
-    background: #fafafa;
-}
-footer {
-    background: #222;
+
+header {
+    background-color: #222;
     color: #fff;
-    text-align: center;
-    padding: 1rem 0;
+}
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+}
+.navbar-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.navbar-links {
+    display: flex;
+    gap: 1.5rem;
+}
+.navbar-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.2s;
+}
+.navbar-links a:hover {
+    color: #f0a500;
+}
+.navbar-auth {
+    display: flex;
+    gap: 1rem;
+}
+.navbar-auth a {
+    color: #fff;
+    background: #f0a500;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.2s;
+}
+.navbar-auth a:hover {
+    background: #cf8500;
 }
 
-/*Responsivo*/
 @media (max-width: 900px) {
     .navbar {
         flex-direction: column;
