@@ -1,4 +1,4 @@
-const usuarios = [
+const usuariosBase = [
   {
     run: "19011022K",
     nombre: "Juan",

@@ -18,14 +18,24 @@
             </div>
             <div class="navbar-auth">
                 <a href="/TiendaOnline/tienda/registro.html">Registro</a>
-                <a href="TiendaOnline/tienda/login.html">Login</a>
+                <a href="/TiendaOnline/tienda/login.html">Login</a>
             </div>
         </nav>
     </header>
 
 <main>
+    <form id="loginForm">
+      <label for="correo">Correo:</label>
+      <input type="email" id="correo" name="correo" required>
+      <small class="error" id="errorCorreo"></small>
 
-</main>
+      <label for="password">Contraseña:</label>
+      <input type="password" id="password" name="password" required>
+      <small class="error" id="errorPassword"></small>
+
+      <button type="submit">Ingresar</button>
+    </form>
+  </main>
 
 <footer>
     &copy; 2024 Tienda Online. Todos los derechos reservados.
@@ -34,4 +44,7 @@
 </body>
 <link rel="stylesheet" href="/TiendaOnline/css/style.css">
 <link rel="stylesheet" href="/TiendaOnline/css/header.css">
+<link rel="stylesheet" href="/TiendaOnline/css/login.css">
+<script src="/TiendaOnline/js/usuarios.js"></script>
+<script src="/TiendaOnline/js/login.js"></script>
 </html>
