@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin | Productos</title>
+  <link rel="stylesheet" href="/TiendaOnline/css/admin.css">
+  <link rel="stylesheet" href="/TiendaOnline/css/productos.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <h2>CoffeeStore</h2>
+    <nav>
+      <a href="./index.html">Dashboard</a>
+      <a href="./usuarios.html">Usuarios</a>
+      <a class="active" href="./productos.html">Productos</a>
+    </nav>
+
+    <div class="sidebar-footer">
+        <button id="btn-logout">Cerrar sesión</button>
+    </div>
+  </aside>
+
+  <main class="content">
+    <header class="topbar">
+      <h1>Productos</h1>
+    </header>
+
+    <!-- Acciones -->
+    <section class="actions">
+      <button id="btn-nuevo">+ Nuevo producto</button>
+      <input type="search" id="buscador" placeholder="Buscar por ID o nombre…" />
+    </section>
+
+    <!-- Tabla -->
+    <section class="panel">
+      <h2 class="panel-title">Listado</h2>
+      <div class="table-wrap">
+        <table id="tabla">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nombre</th>
+              <th>Precio</th>
+              <th>Stock</th>
+              <th>Imagen</th>
+              <th class="col-actions">Acciones</th>
+            </tr>
+          </thead>
+          <tbody><!-- JS --></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal CRUD -->
+  <dialog id="modal">
+    <form id="form" method="dialog" class="form">
+      <h3 id="form-titulo">Nuevo producto</h3>
+
+      <label>ID (SKU)
+        <input id="p-id" type="text" required placeholder="SKU001" maxlength="20">
+      </label>
+
+      <label>Nombre
+        <input id="p-nombre" type="text" required maxlength="80">
+      </label>
+
+      <label>Descripción
+        <textarea id="p-descripcion" rows="3" maxlength="300" placeholder="Descripción breve…"></textarea>
+      </label>
+
+      <div class="grid2">
+        <label>Precio (CLP)
+          <input id="p-precio" type="number" min="0" step="100" required placeholder="12000">
+        </label>
+        <label>Stock
+          <input id="p-stock" type="number" min="0" step="1" required placeholder="50">
+        </label>
+      </div>
+
+      <label>URL de Imagen
+        <input id="p-imagen" type="url" placeholder="https://.../imagen.png">
+      </label>
+
+      <output id="form-error" class="error" aria-live="polite"></output>
+
+      <div class="form-actions">
+        <button id="btn-guardar" type="submit">Guardar</button>
+        <button id="btn-cancelar" type="button">Cancelar</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- Semillas + lógica -->
+  <script src="/TiendaOnline/js/productos.js"></script>
+  <script src="/TiendaOnline/js/productos-admin.js"></script>
+  <script src="/TiendaOnline/js/auth.js"></script>
+
+</body>
+</html>

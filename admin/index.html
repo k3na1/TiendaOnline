@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin | Panel</title>
+  <link rel="stylesheet" href="/TiendaOnline/css/admin.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <h2>CoffeeStore</h2>
+    <nav>
+      <a class="active" href="./index.html">Dashboard</a>
+      <a href="./usuarios.html">Usuarios</a>
+      <a href="./productos.html">Productos</a>
+    </nav>
+
+    <div class="sidebar-footer">
+        <button id="btn-logout">Cerrar sesión</button>
+    </div>
+  </aside>
+
+  <main class="content">
+    <header class="topbar">
+      <h1>Panel de control</h1>
+    </header>
+
+    <!-- KPIs (sin Admins) -->
+    <section class="kpis">
+      <div class="kpi"><span>Usuarios</span><strong id="kpi-usuarios">0</strong></div>
+      <div class="kpi"><span>Vendedores</span><strong id="kpi-vendedores">0</strong></div>
+      <div class="kpi"><span>Clientes</span><strong id="kpi-clientes">0</strong></div>
+      <div class="kpi"><span>Productos</span><strong id="kpi-productos">0</strong></div>
+      <div class="kpi"><span>Stock total</span><strong id="kpi-stock">0</strong></div>
+    </section>
+
+    <!-- Usuarios (preview, solo lectura) -->
+    <section class="panel">
+      <h2 class="panel-title">Usuarios recientes</h2>
+      <div class="actions" style="padding: 0 12px 12px">
+        <input type="search" id="buscador" placeholder="Buscar por RUN, nombre o correo…" />
+        <button id="btn-ver-todos">Ver todos</button>
+      </div>
+      <div class="table-wrap">
+        <table id="tabla">
+          <thead>
+            <tr>
+              <th>RUN</th>
+              <th>Nombre</th>
+              <th>Correo</th>
+              <th>Tipo</th>
+            </tr>
+          </thead>
+          <tbody><!-- JS --></tbody>
+        </table>
+      </div>
+      <p style="margin:10px 12px;color:var(--muted);font-size:12px">
+        Edición disponible en <strong>Usuarios</strong>.
+      </p>
+    </section>
+  </main>
+
+  
+
+  <!-- Datos base -->
+  <script src="/TiendaOnline/js/usuarios.js"></script>
+  <script src="/TiendaOnline/js/productos.js"></script>
+  <script src="/TiendaOnline/js/admin.js"></script>
+  <script src="/TiendaOnline/js/auth.js"></script>
+
+</body>
+</html>

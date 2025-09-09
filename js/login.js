@@ -49,9 +49,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Redirección según rol
     if (usuario.tipo === "Administrador") {
-      window.location.href = "admin/index.html";
+      window.location.href = "/TiendaOnline/admin/index.html";
+    } else if (usuario.tipo === "Vendedor") {
+      window.location.href = "/TiendaOnline/admin/productos.html";
     } else {
-      window.location.href = "index.html"; // Cliente y Vendedor de momento van a la tienda
+      window.location.href = "/TiendaOnline/tienda/index.html";
     }
   });
 });

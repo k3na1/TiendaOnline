@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin | Usuarios</title>
+  <!-- Reusa los estilos base del panel y añade ajustes locales -->
+  <link rel="stylesheet" href="/TiendaOnline/css/admin.css">
+  <link rel="stylesheet" href="/TiendaOnline/css/usuarios.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <h2>CoffeeStore</h2>
+    <nav>
+      <a href="./index.html">Dashboard</a>
+      <a class="active" href="./usuarios.html">Usuarios</a>
+      <a href="./productos.html">Productos</a>
+    </nav>
+
+    <div class="sidebar-footer">
+        <button id="btn-logout">Cerrar sesión</button>
+    </div>
+  </aside>
+
+  <main class="content">
+    <header class="topbar">
+      <h1>Usuarios</h1>
+    </header>
+
+    <!-- Resumen simple de cantidades -->
+    <section class="summary">
+      <div class="pill">Totales: <strong id="sum-total">0</strong></div>
+      <div class="pill">Vendedores: <strong id="sum-vendedores">0</strong></div>
+      <div class="pill">Clientes: <strong id="sum-clientes">0</strong></div>
+    </section>
+
+    <!-- Acciones -->
+    <section class="actions">
+      <button id="btn-nuevo">+ Nuevo usuario</button>
+      <input type="search" id="buscador" placeholder="Buscar por RUN, nombre o correo…" />
+      <select id="filtro-tipo" title="Filtrar por tipo">
+        <option value="">Todos los tipos</option>
+        <option value="Administrador">Administrador</option>
+        <option value="Vendedor">Vendedor</option>
+        <option value="Cliente">Cliente</option>
+      </select>
+    </section>
+
+    <!-- Tabla -->
+    <section class="panel">
+      <h2 class="panel-title">Listado</h2>
+      <div class="table-wrap">
+        <table id="tabla">
+          <thead>
+            <tr>
+              <th>RUN</th>
+              <th>Nombre</th>
+              <th>Correo</th>
+              <th>Tipo</th>
+              <th class="col-actions">Acciones</th>
+            </tr>
+          </thead>
+          <tbody><!-- JS --></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal CRUD -->
+  <dialog id="modal">
+    <form id="form" method="dialog" class="form">
+      <h3 id="form-titulo">Nuevo usuario</h3>
+
+      <label>RUN
+        <input id="f-run" type="text" required placeholder="19011022K" maxlength="12">
+      </label>
+
+      <label>Tipo
+        <select id="f-tipo" required>
+          <option value="">Seleccione…</option>
+          <option>Administrador</option>
+          <option>Vendedor</option>
+          <option>Cliente</option>
+        </select>
+      </label>
+
+      <label>Nombre
+        <input id="f-nombre" type="text" required maxlength="50">
+      </label>
+
+      <label>Apellidos
+        <input id="f-apellidos" type="text" required maxlength="100">
+      </label>
+
+      <label>Correo
+        <input id="f-correo" type="email" required maxlength="100" placeholder="usuario@duoc.cl">
+      </label>
+
+      <label>Password
+        <input id="f-pass" type="password" required minlength="4" maxlength="10" placeholder="4 a 10 caracteres">
+      </label>
+
+      <output id="form-error" class="error" aria-live="polite"></output>
+
+      <div class="form-actions">
+        <button id="btn-guardar" type="submit">Guardar</button>
+        <button id="btn-cancelar" type="button">Cancelar</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- Semillas + lógica de página -->
+  <script src="/TiendaOnline/js/usuarios.js"></script>
+  <script src="/TiendaOnline/js/usuarios-admin.js"></script>
+  <script src="/TiendaOnline/js/auth.js"></script>
+
+</body>
+</html>
