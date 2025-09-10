@@ -1,0 +1,45 @@
+/* /css/base.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+
+:root {
+  /* Tema Claro (Tienda) */
+  --tienda-bg: #FFFFFF;
+  --tienda-bg-alt: #f8f9fa;
+  --tienda-texto: #212529;
+  --tienda-acento: #E67E22;
+  --tienda-acento-hover: #D35400;
+  --tienda-borde: #dee2e6;
+  --tienda-sombra: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+  /* Tema Oscuro (Admin) */
+  --admin-bg: #1a1a1a;
+  --admin-bg-alt: #2c2c2c;
+  --admin-texto: #f8f9fa;
+  --admin-acento: #8E44AD;
+  --admin-acento-hover: #9B59B6;
+  --admin-borde: #444;
+  --admin-sombra: 0 4px 12px rgba(0, 0, 0, 0.2);
+
+  /* Generales */
+  --fuente-principal: 'Poppins', sans-serif;
+  --radio-borde: 8px;
+  --transicion: all 0.3s ease;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--fuente-principal);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  text-decoration: none;
+}

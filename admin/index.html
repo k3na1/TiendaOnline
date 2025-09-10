@@ -3,43 +3,78 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Admin | Panel</title>
-  <link rel="stylesheet" href="/TiendaOnline/css/admin.css">
+  <title>Admin | Dashboard</title>
+  
+  <link rel="stylesheet" href="../css/admin.css">
+
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
   <aside class="sidebar">
-    <h2>CoffeeStore</h2>
+    <div class="sidebar-header">
+      <i class='bx bxs-coffee-bean'></i>
+      <h2>CoffeeStore</h2>
+    </div>
     <nav>
-      <a class="active" href="./index.html">Dashboard</a>
-      <a href="./usuarios.html">Usuarios</a>
-      <a href="./productos.html">Productos</a>
+      <a class="active" href="./index.html"><i class='bx bxs-dashboard'></i> Dashboard</a>
+      <a href="./usuarios.html"><i class='bx bxs-user-detail'></i> Usuarios</a>
+      <a href="./productos.html"><i class='bx bxs-package'></i> Productos</a>
     </nav>
-
     <div class="sidebar-footer">
-        <button id="btn-logout">Cerrar sesión</button>
+      <button id="btn-logout"><i class='bx bx-log-out'></i> Cerrar sesión</button>
     </div>
   </aside>
 
   <main class="content">
     <header class="topbar">
-      <h1>Panel de control</h1>
+      <h1>Dashboard</h1>
     </header>
 
-    <!-- KPIs (sin Admins) -->
     <section class="kpis">
-      <div class="kpi"><span>Usuarios</span><strong id="kpi-usuarios">0</strong></div>
-      <div class="kpi"><span>Vendedores</span><strong id="kpi-vendedores">0</strong></div>
-      <div class="kpi"><span>Clientes</span><strong id="kpi-clientes">0</strong></div>
-      <div class="kpi"><span>Productos</span><strong id="kpi-productos">0</strong></div>
-      <div class="kpi"><span>Stock total</span><strong id="kpi-stock">0</strong></div>
+      <div class="kpi">
+        <div class="kpi-icon" style="background: #e74c3c;"><i class='bx bxs-user'></i></div>
+        <div class="kpi-info">
+          <span>Total Usuarios</span>
+          <strong id="kpi-usuarios">0</strong>
+        </div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-icon" style="background: #3498db;"><i class='bx bxs-user-check'></i></div>
+        <div class="kpi-info">
+          <span>Vendedores</span>
+          <strong id="kpi-vendedores">0</strong>
+        </div>
+      </div>
+       <div class="kpi">
+        <div class="kpi-icon" style="background: #2ecc71;"><i class='bx bxs-user-plus'></i></div>
+        <div class="kpi-info">
+          <span>Clientes</span>
+          <strong id="kpi-clientes">0</strong>
+        </div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-icon" style="background: #f1c40f;"><i class='bx bxs-package'></i></div>
+        <div class="kpi-info">
+          <span>Productos</span>
+          <strong id="kpi-productos">0</strong>
+        </div>
+      </div>
+       <div class="kpi">
+        <div class="kpi-icon" style="background: #9b59b6;"><i class='bx bxs-box'></i></div>
+        <div class="kpi-info">
+          <span>Stock Total</span>
+          <strong id="kpi-stock">0</strong>
+        </div>
+      </div>
     </section>
 
-    <!-- Usuarios (preview, solo lectura) -->
     <section class="panel">
-      <h2 class="panel-title">Usuarios recientes</h2>
-      <div class="actions" style="padding: 0 12px 12px">
-        <input type="search" id="buscador" placeholder="Buscar por RUN, nombre o correo…" />
-        <button id="btn-ver-todos">Ver todos</button>
+      <div class="panel-header">
+        <h2 class="panel-title">Usuarios Recientes</h2>
+        <div class="actions">
+          <input type="search" id="buscador" placeholder="Buscar usuario…">
+          <button id="btn-ver-todos">Ver Todos <i class='bx bx-right-arrow-alt'></i></button>
+        </div>
       </div>
       <div class="table-wrap">
         <table id="tabla">
@@ -51,22 +86,14 @@
               <th>Tipo</th>
             </tr>
           </thead>
-          <tbody><!-- JS --></tbody>
+          <tbody></tbody>
         </table>
       </div>
-      <p style="margin:10px 12px;color:var(--muted);font-size:12px">
-        Edición disponible en <strong>Usuarios</strong>.
-      </p>
     </section>
   </main>
 
-  
-
-  <!-- Datos base -->
-  <script src="/TiendaOnline/js/usuarios.js"></script>
-  <script src="/TiendaOnline/js/productos.js"></script>
-  <script src="/TiendaOnline/js/admin.js"></script>
+    <script src="/TiendaOnline/js/usuarios.js"></script>
+  <script src="/TiendaOnline/js/usuarios-admin.js"></script>
   <script src="/TiendaOnline/js/auth.js"></script>
-
 </body>
 </html>

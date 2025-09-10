@@ -4,37 +4,40 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Admin | Productos</title>
-  <link rel="stylesheet" href="/TiendaOnline/css/admin.css">
-  <link rel="stylesheet" href="/TiendaOnline/css/productos.css">
+
+  <link rel="stylesheet" href="../css/admin.css">
+
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
   <aside class="sidebar">
-    <h2>CoffeeStore</h2>
+    <div class="sidebar-header">
+      <i class='bx bxs-coffee-bean'></i>
+      <h2>CoffeeStore</h2>
+    </div>
     <nav>
-      <a href="./index.html">Dashboard</a>
-      <a href="./usuarios.html">Usuarios</a>
-      <a class="active" href="./productos.html">Productos</a>
+      <a href="./index.html"><i class='bx bxs-dashboard'></i> Dashboard</a>
+      <a href="./usuarios.html"><i class='bx bxs-user-detail'></i> Usuarios</a>
+      <a class="active" href="./productos.html"><i class='bx bxs-package'></i> Productos</a>
     </nav>
-
     <div class="sidebar-footer">
-        <button id="btn-logout">Cerrar sesión</button>
+      <button id="btn-logout"><i class='bx bx-log-out'></i> Cerrar sesión</button>
     </div>
   </aside>
 
   <main class="content">
     <header class="topbar">
-      <h1>Productos</h1>
+      <h1>Gestión de Productos</h1>
     </header>
 
-    <!-- Acciones -->
-    <section class="actions">
-      <button id="btn-nuevo">+ Nuevo producto</button>
-      <input type="search" id="buscador" placeholder="Buscar por ID o nombre…" />
-    </section>
-
-    <!-- Tabla -->
     <section class="panel">
-      <h2 class="panel-title">Listado</h2>
+      <div class="panel-header">
+        <h2 class="panel-title">Catálogo de Productos</h2>
+        <div class="actions">
+          <input type="search" id="buscador" placeholder="Buscar producto…">
+          <button id="btn-nuevo"><i class='bx bx-plus'></i> Nuevo producto</button>
+        </div>
+      </div>
       <div class="table-wrap">
         <table id="tabla">
           <thead>
@@ -44,58 +47,17 @@
               <th>Precio</th>
               <th>Stock</th>
               <th>Imagen</th>
-              <th class="col-actions">Acciones</th>
+              <th>Acciones</th>
             </tr>
           </thead>
-          <tbody><!-- JS --></tbody>
+          <tbody>
+            </tbody>
         </table>
       </div>
     </section>
   </main>
 
-  <!-- Modal CRUD -->
   <dialog id="modal">
     <form id="form" method="dialog" class="form">
       <h3 id="form-titulo">Nuevo producto</h3>
-
-      <label>ID (SKU)
-        <input id="p-id" type="text" required placeholder="SKU001" maxlength="20">
-      </label>
-
-      <label>Nombre
-        <input id="p-nombre" type="text" required maxlength="80">
-      </label>
-
-      <label>Descripción
-        <textarea id="p-descripcion" rows="3" maxlength="300" placeholder="Descripción breve…"></textarea>
-      </label>
-
-      <div class="grid2">
-        <label>Precio (CLP)
-          <input id="p-precio" type="number" min="0" step="100" required placeholder="12000">
-        </label>
-        <label>Stock
-          <input id="p-stock" type="number" min="0" step="1" required placeholder="50">
-        </label>
-      </div>
-
-      <label>URL de Imagen
-        <input id="p-imagen" type="url" placeholder="https://.../imagen.png">
-      </label>
-
-      <output id="form-error" class="error" aria-live="polite"></output>
-
-      <div class="form-actions">
-        <button id="btn-guardar" type="submit">Guardar</button>
-        <button id="btn-cancelar" type="button">Cancelar</button>
-      </div>
-    </form>
-  </dialog>
-
-  <!-- Semillas + lógica -->
-  <script src="/TiendaOnline/js/productos.js"></script>
-  <script src="/TiendaOnline/js/productos-admin.js"></script>
-  <script src="/TiendaOnline/js/auth.js"></script>
-
-</body>
-</html>
+      <label>ID (SKU)<input id="p-id" type="text" required placeholder="SKU001" maxlength="2
