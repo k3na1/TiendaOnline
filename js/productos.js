@@ -12,7 +12,7 @@ const productosBase = [
         descripcion: "Un café equilibrado y suave, perfecto para empezar el día. Notas de chocolate y nuez.",
         precio: 12000,
         stock: 50,
-        imagen: "https://via.placeholder.com/300x300.png?text=Cafe+Clasico"
+        imagen: "https://static.wixstatic.com/media/48f789_53c573c80f8c416586d3ee6aa1a75f69~mv2.jpg/v1/fill/w_980,h_653,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/48f789_53c573c80f8c416586d3ee6aa1a75f69~mv2.jpg"
     },
     {
         id: "SKU002",
@@ -157,6 +157,26 @@ function renderizarDetalleProducto() {
             <button class="btn-agregar-carrito" data-id="${producto.id}">Añadir al Carrito</button>
         </div>
     `;
+
+    // Buscar el botón "Añadir al Carrito"
+const btnAgregar = container.querySelector(".btn-agregar-carrito");
+
+if (btnAgregar) {
+  btnAgregar.addEventListener("click", () => {
+    const cantidadInput = document.getElementById("cantidad");
+    const cantidad = parseInt(cantidadInput.value);
+
+    if (cantidad > 0 && cantidad <= producto.stock) {
+      if (typeof agregarAlCarrito === "function") {
+        agregarAlCarrito(producto, cantidad); // 👈 función definida en carrito.js
+      } else {
+        console.error("agregarAlCarrito no está definido. ¿Cargaste carrito.js?");
+      }
+    } else {
+      alert("Cantidad inválida.");
+    }
+  });
+}
 
     
 }

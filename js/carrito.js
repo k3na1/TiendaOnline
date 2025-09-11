@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         if (btnComprar) {
             btnComprar.addEventListener("click", () => {
-                alert("Gracias por tu compra (simulación)!");
+                alert("Gracias por tu compra!");
                 vaciarCarrito();
             });
         }
@@ -32,59 +32,71 @@ function saveCarrito(carrito) {
 }
 
 function renderizarCarrito() {
-    const carrito = getCarrito();
-    const container = document.getElementById("carrito-container");
-    const resumenContainer = document.getElementById("carrito-resumen");
+  const carrito = getCarrito();
+  const container = document.getElementById("carrito-container");
+  const resumenContainer = document.getElementById("carrito-resumen");
 
-    if (!container || !resumenContainer) return;
+  if (!container || !resumenContainer) return;
 
-    if (carrito.length === 0) {
-        container.innerHTML = "<p id='mensaje-carrito-vacio'>Tu carrito está vacío.</p>";
-        resumenContainer.style.display = "none";
-        return;
-    }
+  if (carrito.length === 0) {
+    container.innerHTML = "<p id='mensaje-carrito-vacio'>Tu carrito está vacío.</p>";
+    resumenContainer.style.display = "none";
+    return;
+  }
 
-    resumenContainer.style.display = "block";
-    container.innerHTML = "";
-    let total = 0;
+  resumenContainer.style.display = "block";
+  container.innerHTML = "";
 
-    carrito.forEach(item => {
-        const itemDiv = document.createElement("div");
-        itemDiv.className = "carrito-item";
-        itemDiv.innerHTML = `
-            <img src="${item.imagen}" alt="${item.nombre}">
-            <div class="carrito-item-info">
-                <h3>${item.nombre}</h3>
-                <p>Precio: $${item.precio.toLocaleString('es-CL')}</p>
-            </div>
-            <div class="carrito-item-actions">
-                <input type="number" value="${item.cantidad}" min="1" max="${item.stock}" data-id="${item.id}" class="item-cantidad">
-                <p>Subtotal: <strong>$${(item.cantidad * item.precio).toLocaleString('es-CL')}</strong></p>
-                <button data-id="${item.id}" class="btn-eliminar">Eliminar</button>
-            </div>
-        `;
-        container.appendChild(itemDiv);
-        total += item.cantidad * item.precio;
-    });
+  let subtotal = 0;
 
-    // Actualizar total en el resumen
-    document.getElementById("subtotal-precio").textContent = `$${total.toLocaleString('es-CL')}`;
-    document.getElementById("total-precio").textContent = `$${total.toLocaleString('es-CL')}`;
+  carrito.forEach(item => {
+    const itemDiv = document.createElement("div");
+    itemDiv.className = "carrito-item";
+    itemDiv.innerHTML = `
+      <img src="${item.imagen}" alt="${item.nombre}">
+      <div class="carrito-item-info">
+        <h3>${item.nombre}</h3>
+        <p>Precio: $${item.precio.toLocaleString('es-CL')}</p>
+      </div>
+      <div class="carrito-item-actions">
+        <input type="number" value="${item.cantidad}" min="1" max="${item.stock}" data-id="${item.id}" class="item-cantidad">
+        <p>Subtotal: <strong>$${(item.cantidad * item.precio).toLocaleString('es-CL')}</strong></p>
+        <button data-id="${item.id}" class="btn-eliminar">Eliminar</button>
+      </div>
+    `;
+    container.appendChild(itemDiv);
 
-    // Añadir eventos a los botones y inputs
-    document.querySelectorAll(".btn-eliminar").forEach(btn => {
-        btn.addEventListener("click", (e) => eliminarDelCarrito(e.target.getAttribute("data-id")));
-    });
+    subtotal += item.cantidad * item.precio;
+  });
 
-    document.querySelectorAll(".item-cantidad").forEach(input => {
-        input.addEventListener("change", (e) => {
-            const id = e.target.getAttribute("data-id");
-            const cantidad = parseInt(e.target.value);
-            actualizarCantidad(id, cantidad);
-        });
-    });
+  // Mostrar resumen
+  document.getElementById("subtotal-precio").textContent =
+    `$${subtotal.toLocaleString("es-CL")}`;
+
+  const envio = 4000;
+  document.getElementById("envio-precio").textContent =
+    `$${envio.toLocaleString("es-CL")}`;
+
+  const total = subtotal + envio;
+  document.getElementById("total-precio").textContent =
+    `$${total.toLocaleString("es-CL")}`;
+
+  // Eventos eliminar y actualizar
+  document.querySelectorAll(".btn-eliminar").forEach(btn => {
+    btn.addEventListener("click", (e) => eliminarDelCarrito(e.target.getAttribute("data-id")));
+  });
+
+  document.querySelectorAll(".item-cantidad").forEach(input => {
+    input.addEventListener("change", (e) => {
+      const id = e.target.getAttribute("data-id");
+      const cantidad = parseInt(e.target.value);
+      actualizarCantidad(id, cantidad);
+
+  });
+});
 }
 
+      
 function eliminarDelCarrito(id) {
     let carrito = getCarrito();
     carrito = carrito.filter(item => item.id !== id);
