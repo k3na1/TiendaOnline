@@ -3,36 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tienda Online</title>
+    <title>El Arte del Latte - CoffeeShop</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/blog.css">
 </head>
 <body>
     <header>
         <nav class="navbar">
             <div class="navbar-title">CoffeeShop</div>
             <div class="navbar-links">
-                <a href="/TiendaOnline/tienda/index.html">Inicio</a>
-                <a href="/TiendaOnline/tienda/productos.html">Productos</a>
-                <a href="/TiendaOnline/tienda/contacto.html">Contacto</a>
-                <a href="/TiendaOnline/tienda/blogs.html">Blogs</a>
-                <a href="/TiendaOnline/tienda/nosotros.html">Nosotros</a>
+                <a href="./index.html">Inicio</a>
+                <a href="./productos.html">Productos</a>
+                <a href="./contacto.html">Contacto</a>
+                <a href="./blogs.html" class="active">Blogs</a>
+                <a href="./nosotros.html">Nosotros</a>
             </div>
             <div class="navbar-auth" id="navbarAuth">
-                <a href="/TiendaOnline/tienda/registro.html">Registro</a>
-                <a href="/TiendaOnline/tienda/login.html">Login</a>
+                <a href="./registro.html">Registro</a>
+                <a href="./login.html">Login</a>
             </div>
         </nav>
     </header>
 
-<main>
+    <main>
+        <article class="blog-post">
+            <img src="https://via.placeholder.com/800x400.png?text=Arte+Latte" alt="Arte latte en una taza" class="blog-post-img">
+            <h1>El Arte del Latte: Secretos para una Espuma Perfecta</h1>
+            <div class="blog-post-meta">Publicado el 05 de Septiembre, 2025 por el Equipo CoffeeShop</div>
+            <div class="blog-post-content">
+                <p>
+                    Un buen latte es una obra de arte, y el lienzo es una espuma de leche perfectamente texturizada. Lograr esa microespuma sedosa en casa puede parecer un desafío, pero con la técnica correcta, es más fácil de lo que crees. El secreto no está solo en el vapor, sino en la leche y la temperatura.
+                </p>
+                <p>
+                    <strong>La Leche es Clave:</strong> Utiliza siempre leche entera y muy fría. El contenido de grasa y proteína es fundamental para crear una espuma estable y con brillo. La baja temperatura inicial te da más tiempo para texturizarla antes de que se caliente demasiado.
+                </p>
+                <p>
+                    <strong>La Técnica:</strong> Hay dos fases. Primero, la "aireación", donde introduces la punta de la lanceta de vapor justo debajo de la superficie de la leche para inyectar aire y crear volumen. Escucharás un siseo suave. Una vez que la jarra se sienta tibia al tacto, sumerge la lanceta más profundamente para la segunda fase: la "emulsión". Aquí, creas un remolino que integra el aire y rompe las burbujas grandes, dejando una textura de "pintura fresca". ¡Nunca dejes que la leche hierva! El punto ideal es alrededor de 65°C.
+                </p>
+                <a href="./blogs.html" class="back-link">&larr; Volver al blog</a>
+            </div>
+        </article>
+    </main>
 
-</main>
-
-<footer>
-    &copy; 2024 Tienda Online. Todos los derechos reservados.
-</footer>
-
+    <footer>
+        &copy; 2024 CoffeeShop. Todos los derechos reservados.
+    </footer>
+    
+    <script src="../js/navbar.js"></script>
 </body>
-<link rel="stylesheet" href="/TiendaOnline/css/style.css">
-<link rel="stylesheet" href="/TiendaOnline/css/header.css">
-<script src="/TiendaOnline/js/navbar.js"></script>
 </html>

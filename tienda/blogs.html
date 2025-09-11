@@ -3,36 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tienda Online</title>
+    <title>Blog - CoffeeShop</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/blog.css">
 </head>
 <body>
     <header>
         <nav class="navbar">
             <div class="navbar-title">CoffeeShop</div>
             <div class="navbar-links">
-                <a href="/TiendaOnline/tienda/index.html">Inicio</a>
-                <a href="/TiendaOnline/tienda/productos.html">Productos</a>
-                <a href="/TiendaOnline/tienda/contacto.html">Contacto</a>
-                <a href="/TiendaOnline/tienda/blogs.html">Blogs</a>
-                <a href="/TiendaOnline/tienda/nosotros.html">Nosotros</a>
+                <a href="./index.html">Inicio</a>
+                <a href="./productos.html">Productos</a>
+                <a href="./contacto.html">Contacto</a>
+                <a href="./blogs.html" class="active">Blogs</a>
+                <a href="./nosotros.html">Nosotros</a>
             </div>
             <div class="navbar-auth" id="navbarAuth">
-                <a href="/TiendaOnline/tienda/registro.html">Registro</a>
-                <a href="/TiendaOnline/tienda/login.html">Login</a>
+                <a href="./registro.html">Registro</a>
+                <a href="./login.html">Login</a>
             </div>
         </nav>
     </header>
 
-<main>
+    <main>
+        <div class="blog-container">
+            <h1>Nuestro Blog del Café</h1>
+            <p>Descubre secretos, guías y noticias del fascinante mundo del café de especialidad.</p>
 
-</main>
+            <div class="blog-grid">
+                <div class="blog-card">
+                    <img src="https://via.placeholder.com/400x250.png?text=Granos+de+Cafe" alt="Granos de café" class="blog-card-img">
+                    <div class="blog-card-content">
+                        <h3>Guía para Principiantes: Cómo Elegir tu Café Ideal</h3>
+                        <p>¿Te sientes perdido entre tantos orígenes, tuestes y perfiles de sabor? Te ayudamos a encontrar el grano perfecto para ti.</p>
+                        <a href="./blog-detalle1.html" class="btn-leermas">Leer más</a>
+                    </div>
+                </div>
 
-<footer>
-    &copy; 2024 Tienda Online. Todos los derechos reservados.
-</footer>
+                <div class="blog-card">
+                    <img src="https://via.placeholder.com/400x250.png?text=Arte+Latte" alt="Arte latte en una taza" class="blog-card-img">
+                    <div class="blog-card-content">
+                        <h3>El Arte del Latte: Secretos para una Espuma Perfecta</h3>
+                        <p>Conviértete en un barista en casa. Te enseñamos las técnicas y secretos para lograr una espuma de leche cremosa y sedosa.</p>
+                        <a href="./blog-detalle2.html" class="btn-leermas">Leer más</a>
+                    </div>
+                </div>
 
+                </div>
+        </div>
+    </main>
+
+    <footer>
+        &copy; 2024 CoffeeShop. Todos los derechos reservados.
+    </footer>
+
+    <script src="../js/navbar.js"></script>
 </body>
-<link rel="stylesheet" href="/TiendaOnline/css/style.css">
-<link rel="stylesheet" href="/TiendaOnline/css/header.css">
-<script src="/TiendaOnline/js/navbar.js"></script>
 </html>
