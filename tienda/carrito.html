@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalle del Producto - Tienda Online</title>
+    <title>Carrito de Compras - CoffeeShop</title>
+    <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/header.css">
-    <link rel="stylesheet" href="../css/catalogo.css">
+    <link rel="stylesheet" href="../css/carrito.css">
 </head>
 <body>
     <header>
@@ -27,12 +28,30 @@
     </header>
 
     <main>
-        <div id="producto-detalle-container" class="producto-detalle-grid">
+        <h1>Mi Carrito de Compras</h1>
+        
+        <div class="carrito-layout">
+            <div id="carrito-container" class="carrito-items">
+                </div>
+            
+            <div id="carrito-resumen" class="carrito-summary">
+                <h2>Resumen</h2>
+                <div class="summary-line">
+                    <span>Subtotal:</span>
+                    <strong id="subtotal-precio">$0</strong>
+                </div>
+                <div class="summary-line">
+                    <span>Total:</span>
+                    <strong id="total-precio">$0</strong>
+                </div>
+                <button id="btn-comprar" class="btn-principal">Proceder al Pago</button>
+                <button id="btn-vaciar" class="btn-secundario">Vaciar Carrito</button>
             </div>
+        </div>
     </main>
 
     <footer>
-        &copy; 2024 Tienda Online. Todos los derechos reservados.
+        &copy; 2024 CoffeeShop. Todos los derechos reservados.
     </footer>
 
     <script src="../js/productos.js"></script>
