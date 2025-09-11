@@ -90,6 +90,99 @@ footer {
   background: #cf8500;
 }
 
+/* === Carrusel === */
+.carrusel {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto 2rem;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.carrusel-contenedor {
+  position: relative;
+  width: 100%;
+  height: 400px; /* o el alto de tus imágenes */
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.slide.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+.carrusel img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.carrusel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border-radius: 50%;
+}
+.carrusel-btn.prev { left: 10px; }
+.carrusel-btn.next { right: 10px; }
+
+/* === Productos destacados === */
+.destacados {
+  margin-top: 2rem;
+}
+.destacados h2 {
+  margin-bottom: 1.5rem;
+  color: #3e2723;
+}
+.destacados-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+.destacados .producto-card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+.destacados .producto-card img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 0.8rem;
+}
+.destacados .btn {
+  display: inline-block;
+  margin-top: 0.8rem;
+  background: #f0a500;
+  color: #3e2723;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+}
+.destacados .btn:hover {
+  background: #cf8500;
+}
+
+
 
 /* === Responsivo (solo main y footer) === */
 @media (max-width: 600px) {
