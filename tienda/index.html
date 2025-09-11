@@ -24,16 +24,44 @@
     </header>
 
 <main>
-    <h1>Bienvenido a CoffeeShop</h1>
-    <p>Descubre nuestros productos y ofertas exclusivas.</p>
+  <!-- Carrusel -->
+  <section class="carrusel">
+    <div class="carrusel-contenedor">
+      <div class="slide active">
+        <img src="https://tse1.mm.bing.net/th/id/OIP.kEdR1PWJNfsgqM4RIQ9ebgHaE7?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Promoción 1">
+      </div>
+      <div class="slide">
+        <img src="https://cdn.mos.cms.futurecdn.net/UoHp9eWdb7kAgcmYDHxDN3-1920-80.jpg" alt="Promoción 2">
+      </div>
+      <div class="slide">
+        <img src="https://th.bing.com/th/id/R.f2acbd2f4f5650349cbb2dae08a2a1a4?rik=5h%2fd1emv%2btoaBw&pid=ImgRaw&r=0" alt="Promoción 3">
+      </div>
+    </div>
+    <button class="carrusel-btn prev">&#10094;</button>
+    <button class="carrusel-btn next">&#10095;</button>
+  </section>
+
+  <!-- Bienvenida -->
+  <h1>Bienvenido a CoffeeShop</h1>
+  <p>Descubre nuestros productos y ofertas exclusivas.</p>
+
+  <!-- Productos destacados -->
+  <section class="destacados">
+    <h2>Productos destacados</h2>
+    <div class="destacados-grid" id="destacados-container">
+      <!-- Aquí se insertan productos con JS -->
+    </div>
+  </section>
 </main>
 
 <footer>
-    &copy; 2024 Tienda Online. Todos los derechos reservados.
+  &copy; 2024 Tienda Online. Todos los derechos reservados.
 </footer>
+
 
 </body>
 <link rel="stylesheet" href="../css/style.css">
 <link rel="stylesheet" href="../css/header.css">
 <script src="../js/navbar.js"></script>
+<script src="../js/carrusel.js"></script>
 </html>
