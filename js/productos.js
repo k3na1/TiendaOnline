@@ -2,14 +2,17 @@
 
 // 1. LISTA DE PRODUCTOS (ARREGLO DE OBJETOS)
 // Este es el arreglo de productos que se usará para mostrar en la tienda.
-const productos = [
+const KEY_PRODUCTOS = "productos";
+
+// Productos base (solo se usarán si no hay nada en localStorage)
+const productosBase = [
     {
         id: "SKU001",
         nombre: "Café de Grano Clásico",
         descripcion: "Un café equilibrado y suave, perfecto para empezar el día. Notas de chocolate y nuez.",
         precio: 12000,
         stock: 50,
-        imagen: "https://via.placeholder.com/300x300.png?text=Cafe+Clasico" // Reemplazar con tu ruta de imagen
+        imagen: "https://via.placeholder.com/300x300.png?text=Cafe+Clasico"
     },
     {
         id: "SKU002",
@@ -17,7 +20,7 @@ const productos = [
         descripcion: "Café de especialidad con notas florales y cítricas. Acidez brillante y cuerpo ligero.",
         precio: 18000,
         stock: 30,
-        imagen: "https://via.placeholder.com/300x300.png?text=Cafe+Etiopia" // Reemplazar con tu ruta de imagen
+        imagen: "https://via.placeholder.com/300x300.png?text=Cafe+Etiopia"
     },
     {
         id: "SKU003",
@@ -25,7 +28,7 @@ const productos = [
         descripcion: "Prepara tu café favorito con esta elegante y duradera prensa francesa de 800ml.",
         precio: 25000,
         stock: 25,
-        imagen: "https://via.placeholder.com/300x300.png?text=Prensa+Francesa" // Reemplazar con tu ruta de imagen
+        imagen: "https://via.placeholder.com/300x300.png?text=Prensa+Francesa"
     },
     {
         id: "SKU004",
@@ -33,9 +36,27 @@ const productos = [
         descripcion: "Muele tus granos de café al momento para una frescura y aroma inigualables.",
         precio: 22000,
         stock: 40,
-        imagen: "https://via.placeholder.com/300x300.png?text=Molinillo" // Reemplazar con tu ruta de imagen
+        imagen: "https://via.placeholder.com/300x300.png?text=Molinillo"
     }
 ];
+
+// Función para cargar productos desde localStorage o base
+function loadProductos() {
+    const raw = localStorage.getItem(KEY_PRODUCTOS);
+    if (raw) {
+        try {
+            return JSON.parse(raw);
+        } catch (e) {
+            console.error("Error parseando productos de localStorage:", e);
+        }
+    }
+    // Si no hay nada en localStorage, inicializamos
+    localStorage.setItem(KEY_PRODUCTOS, JSON.stringify(productosBase));
+    return [...productosBase];
+}
+
+// Variable global con la lista actual
+let productos = loadProductos();
 
 // 2. LÓGICA PARA RENDERIZAR (DIBUJAR) LOS PRODUCTOS
 
@@ -137,5 +158,5 @@ function renderizarDetalleProducto() {
         </div>
     `;
 
-    // Aquí iría la lógica para el botón "Añadir al Carrito" que veremos después.
+    
 }

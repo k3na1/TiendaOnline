@@ -1,88 +1,120 @@
-// admin/admin.js
-// Dashboard: KPIs + preview de usuarios (solo lectura)
 
-const KEY_USUARIOS = "usuarios";
-const KEY_PRODUCTOS = "productos";
+const ADMIN_KEY_USUARIOS = "usuarios";
+const ADMIN_KEY_PRODUCTOS = "productos";
 
-let USUARIOS = [];
-let PRODUCTOS = [];
 
-// ---------- Storage ----------
+// =============================
+// FUNCIONES DE CARGA
+// =============================
+
+// Cargar usuarios desde localStorage o fallback
 function loadUsuarios() {
-  const raw = localStorage.getItem(KEY_USUARIOS);
-  if (raw) { try { return JSON.parse(raw); } catch {} }
-  localStorage.setItem(KEY_USUARIOS, JSON.stringify(usuariosBase || []));
-  return [...(usuariosBase || [])];
+  const raw = localStorage.getItem(ADMIN_KEY_USUARIOS);
+  if (raw) {
+    try {
+      return JSON.parse(raw);
+    } catch (e) {
+      console.error("Error parseando usuarios:", e);
+    }
+  }
+  if (typeof usuariosBase !== "undefined") {
+    localStorage.setItem(ADMIN_KEY_USUARIOS, JSON.stringify(usuariosBase));
+    return [...usuariosBase];
+  }
+  return [];
 }
+
+// Cargar productos desde localStorage o fallback
 function loadProductos() {
-  const raw = localStorage.getItem(KEY_PRODUCTOS);
-  if (raw) { try { return JSON.parse(raw); } catch {} }
-  localStorage.setItem(KEY_PRODUCTOS, JSON.stringify(productos || []));
-  return [...(productos || [])];
+  const raw = localStorage.getItem(ADMIN_KEY_PRODUCTOS);
+  if (raw) {
+    try {
+      return JSON.parse(raw);
+    } catch (e) {
+      console.error("Error parseando productos:", e);
+    }
+  }
+  if (typeof productosBase !== "undefined") {
+    localStorage.setItem(ADMIN_KEY_PRODUCTOS, JSON.stringify(productosBase));
+    return [...productosBase];
+  }
+  return [];
 }
 
-// ---------- KPIs ----------
-function setText(id, v){ const el = document.getElementById(id); if (el) el.textContent = v; }
+// =============================
+// VARIABLES GLOBALES
+// =============================
+let USUARIOS = loadUsuarios();
+let PRODUCTOS = loadProductos();
 
+// =============================
+// RENDER DE KPIs
+// =============================
 function renderKPIs() {
-  const total = USUARIOS.length;
-  const vendedores = USUARIOS.filter(u => (u.tipo||"") === "Vendedor").length;
-  const clientes = USUARIOS.filter(u => (u.tipo||"") === "Cliente").length;
-
+  const totalUsuarios = USUARIOS.length;
+  const totalVendedores = USUARIOS.filter(u => u.tipo === "Vendedor").length;
+  const totalClientes = USUARIOS.filter(u => u.tipo === "Cliente").length;
   const totalProductos = PRODUCTOS.length;
-  const stockTotal = PRODUCTOS.reduce((s, p) => s + (Number(p.stock) || 0), 0);
+  const totalStock = PRODUCTOS.reduce((acc, p) => acc + (p.stock || 0), 0);
 
-  setText("kpi-usuarios", total);
-  setText("kpi-vendedores", vendedores);
-  setText("kpi-clientes", clientes);
-  setText("kpi-productos", totalProductos);
-  setText("kpi-stock", stockTotal);
+  document.getElementById("kpi-usuarios").textContent = totalUsuarios;
+  document.getElementById("kpi-vendedores").textContent = totalVendedores;
+  document.getElementById("kpi-clientes").textContent = totalClientes;
+  document.getElementById("kpi-productos").textContent = totalProductos;
+  document.getElementById("kpi-stock").textContent = totalStock;
 }
 
-// ---------- Tabla (preview) ----------
-function renderTablaPreview() {
-  const tbody = document.querySelector("#tabla tbody");
-  if (!tbody) return;
+// =============================
+// RENDER DE USUARIOS RECIENTES
+// =============================
+function renderUsuariosRecientes() {
+  const container = document.getElementById("tabla-usuarios-recientes");
+  if (!container) return;
 
-  const q = (document.getElementById("buscador")?.value || "").trim().toLowerCase();
+  container.innerHTML = "";
 
-  // Filtra y muestra solo 5
-  const data = USUARIOS
-    .filter(u => {
-      if (!q) return true;
-      return (
-        u.run.toLowerCase().includes(q) ||
-        (u.nombre + " " + u.apellidos).toLowerCase().includes(q) ||
-        u.correo.toLowerCase().includes(q)
-      );
-    })
-    .slice(0, 5);
+  if (USUARIOS.length === 0) {
+    container.innerHTML = `
+      <tr><td colspan="4">Sin usuarios registrados</td></tr>
+    `;
+    return;
+  }
 
-  tbody.innerHTML = "";
-  data.forEach(u => {
+  USUARIOS.slice(0, 5).forEach(usuario => {
     const tr = document.createElement("tr");
     tr.innerHTML = `
-      <td><span class="badge">${u.run}</span></td>
-      <td>${u.nombre} ${u.apellidos}</td>
-      <td>${u.correo}</td>
-      <td>${u.tipo}</td>
+      <td>${usuario.run}</td>
+      <td>${usuario.nombre} ${usuario.apellidos || ""}</td>
+      <td>${usuario.correo}</td>
+      <td>${usuario.tipo}</td>
     `;
-    tbody.appendChild(tr);
+    container.appendChild(tr);
   });
 }
 
-// ---------- Init ----------
+// =============================
+// EVENTOS
+// =============================
 document.addEventListener("DOMContentLoaded", () => {
-  USUARIOS = loadUsuarios();
-  PRODUCTOS = loadProductos();
-
+  // Render inicial
   renderKPIs();
-  renderTablaPreview();
+  renderUsuariosRecientes();
 
-  const busc = document.getElementById("buscador");
-  busc.addEventListener("input", renderTablaPreview);
+  // Botón cerrar sesión
+  const btnLogout = document.getElementById("btn-logout");
+  if (btnLogout) {
+    btnLogout.addEventListener("click", () => {
+      localStorage.removeItem("usuarioLogueado");
+      window.location.href = "../index.html";
+    });
+  }
 
-  document.getElementById("btn-ver-todos").addEventListener("click", () => {
-    location.href = "./usuarios.html";
-  });
+  // Botón "Ver todos"
+  const btnVerTodos = document.getElementById("btn-ver-todos");
+  if (btnVerTodos) {
+    btnVerTodos.addEventListener("click", () => {
+      window.location.href = "./usuarios.html";
+    });
+  }
 });
+

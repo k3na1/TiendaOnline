@@ -1,38 +1,68 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tienda Online</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacto - CoffeeShop</title>
+  <link rel="stylesheet" href="/TiendaOnline/css/style.css">
+  <link rel="stylesheet" href="/TiendaOnline/css/header.css">
 </head>
 <body>
-    <header>
-        <nav class="navbar">
-            <div class="navbar-title">CoffeeShop</div>
-            <div class="navbar-links">
-                <a href="/TiendaOnline/tienda/index.html">Inicio</a>
-                <a href="/TiendaOnline/tienda/productos.html">Productos</a>
-                <a href="/TiendaOnline/tienda/contacto.html">Contacto</a>
-                <a href="/TiendaOnline/tienda/blogs.html">Blogs</a>
-                <a href="/TiendaOnline/tienda/nosotros.html">Nosotros</a>
-            </div>
-            <div class="navbar-auth" id="navbarAuth">
-                <a href="/TiendaOnline/tienda/registro.html">Registro</a>
-                <a href="/TiendaOnline/tienda/login.html">Login</a>
-            </div>
-        </nav>
-    </header>
+  <header>
+    <nav class="navbar">
+      <div class="navbar-title">CoffeeShop</div>
+      <div class="navbar-links">
+        <a href="/TiendaOnline/tienda/index.html">Inicio</a>
+        <a href="/TiendaOnline/tienda/productos.html">Productos</a>
+        <a href="/TiendaOnline/tienda/contacto.html" class="active">Contacto</a>
+        <a href="/TiendaOnline/tienda/blogs.html">Blogs</a>
+        <a href="/TiendaOnline/tienda/nosotros.html">Nosotros</a>
+      </div>
+      <div class="navbar-auth" id="navbarAuth">
+        <a href="/TiendaOnline/tienda/registro.html">Registro</a>
+        <a href="/TiendaOnline/tienda/login.html">Login</a>
+      </div>
+    </nav>
+  </header>
 
-<main>
+  <main>
+    <h1>Contáctanos</h1>
+    <p>Si tienes alguna duda o consulta, completa este formulario y te responderemos pronto.</p>
 
-</main>
+    <form id="contactoForm" class="contact-form">
+      <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" name="nombre" required>
+      </div>
 
-<footer>
-    &copy; 2024 Tienda Online. Todos los derechos reservados.
-</footer>
+      <div class="form-group">
+        <label for="correo">Correo</label>
+        <input type="email" id="correo" name="correo" required>
+      </div>
 
+      <div class="form-group">
+        <label for="mensaje">Mensaje</label>
+        <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+      </div>
+
+      <button type="submit">Enviar</button>
+    </form>
+
+    <p id="mensajeExito" style="color:green; margin-top:1rem; display:none;">
+      ✅ Tu mensaje fue enviado correctamente (simulación).
+    </p>
+  </main>
+
+  <footer>
+    &copy; 2024 CoffeeShop. Todos los derechos reservados.
+  </footer>
+
+  <script>
+    document.getElementById("contactoForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      document.getElementById("mensajeExito").style.display = "block";
+      this.reset();
+    });
+  </script>
 </body>
-<link rel="stylesheet" href="/TiendaOnline/css/style.css">
-<link rel="stylesheet" href="/TiendaOnline/css/header.css">
-<script src="/TiendaOnline/js/navbar.js"></script>
 </html>
